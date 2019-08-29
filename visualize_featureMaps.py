@@ -30,7 +30,8 @@ import math
 from random import randrange
 
 # needs more work
-MODEL_PATH = '/Users/hossam.amer/7aS7aS_Works/work/jpeg_ml_research/inceptionv3/inception_model'
+# MODEL_PATH = '/Users/hossam.amer/7aS7aS_Works/work/jpeg_ml_research/inceptionv3/inception_model'
+MODEL_PATH = './inception_model'
 
 # YUV Path
 PATH_TO_RECONS = '/Volumes/MULTICOMHD2/set_yuv/Seq-RECONS/'
