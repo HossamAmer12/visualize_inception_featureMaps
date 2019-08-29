@@ -1,2 +1,2 @@
 # visualize_inception_featureMaps
-Visualize the feature maps for Inception V3
+Visualize the feature maps for ImageNet validation images under Inception V3 
