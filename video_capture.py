@@ -82,9 +82,13 @@ class VideoCaptureYUV:
         # YUV conversion matrix from ITU-R BT.601 version (SDTV)
         # Note the swapped R and B planes!
         #              Y       U       V
-        M = np.array([[1.164,  2.017,  0.000],    # B
+        # M = np.array([[1.164,  2.017,  0.000],    # B
+        #           [1.164, -0.392, -0.813],    # G
+        #           [1.164,  0.000,  1.596]])   # R
+
+        M = np.array([[1.164,  0.000,  1.596],    # R
                   [1.164, -0.392, -0.813],    # G
-                  [1.164,  0.000,  1.596]])   # R
+                  [1.164,  2.017,  0.000]])   # B
         # Take the dot product with the matrix to produce BGR output, clamp the
         # results to byte range and convert to bytes
         self.rgb = self.yuv.dot(M.T).clip(0, 255).astype(np.uint8)
@@ -107,9 +111,14 @@ class VideoCaptureYUV:
         YUV[:, :, 0]  = YUV[:, :, 0]  - 16   # Offset Y by 16
         YUV[:, :, 1:] = YUV[:, :, 1:] - 128  # Offset UV by 128
         
-        M = np.array([[1.164,  2.017,  0.000],    # B
+        # M = np.array([[1.164,  2.017,  0.000],    # B
+        #           [1.164, -0.392, -0.813],    # G
+        #           [1.164,  0.000,  1.596]])   # R
+
+        M = np.array([[1.164,  0.000,  1.596],    # R
                   [1.164, -0.392, -0.813],    # G
-                  [1.164,  0.000,  1.596]])   # R
+                  [1.164,  2.017,  0.000]])   # B
+
         # Take the dot product with the matrix to produce BGR output, clamp the
         # results to byte range and convert to bytes
         rgb = YUV.dot(M.T).clip(0, 255).astype(np.uint8)
